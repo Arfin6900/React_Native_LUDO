@@ -15,28 +15,33 @@ import {
 // or any pure javascript modules available in npm
 
 export default function App() {
-  const [modal,setmodal]=React.useState({open:false})
-  const [num,setnum]=React.useState(0)
-  const [index, setindex] = React.useState({
-    player1:[5,6,3,14],
-    player2: [5,6,3,14],
-    player3: [5,6,3,14],
-    player4: [5,6,3,14],
+  const [modal, setmodal] = React.useState({
+    open: false,
+    got_1: false,
+    got_2: false,
+    got_3: false,
+    got_4: false,
   });
-  const [isopen, setisopen]=React.useState({
-    open:[{player1:false}],
-    open:[{player2:false}],
-    open:[{player3:false}],
-    open:[{player4:false}],
-    
-  })
+  const [num, setnum] = React.useState(0);
+  const [index, setindex] = React.useState({
+    player1: [5, 6, 3, 14],
+    player2: [5, 6, 3, 14],
+    player3: [5, 6, 3, 14],
+    player4: [5, 6, 3, 14],
+  });
+  const [isopen, setisopen] = React.useState({
+    open: [{player1: false}],
+    open: [{player2: false}],
+    open: [{player3: false}],
+    open: [{player4: false}],
+  });
   const boxesarr = [
     {
       id: index.player1[0],
       id2: index.player1[1],
       id3: index.player1[2],
       id4: index.player1[3],
-      Main_Id:0,
+      Main_Id: 0,
       color: 'yellow',
       justifyContent: 'flex-end',
       player: [
@@ -112,7 +117,7 @@ export default function App() {
       id2: index.player2[1],
       id3: index.player2[2],
       id4: index.player2[3],
-      Main_Id:1,
+      Main_Id: 1,
       color: 'red',
       player: [
         {
@@ -188,7 +193,7 @@ export default function App() {
       id2: index.player3[1],
       id3: index.player3[2],
       id4: index.player3[3],
-      Main_Id:2,
+      Main_Id: 2,
       color: 'green',
       player: [
         {
@@ -263,7 +268,7 @@ export default function App() {
       id2: index.player4[1],
       id3: index.player4[2],
       id4: index.player4[3],
-      Main_Id:3,
+      Main_Id: 3,
       color: 'blue',
       player: [
         {
@@ -582,8 +587,140 @@ export default function App() {
   //     setturns(boxesarr[index])
   //   }
   // },[])
-  console.log( "I am ID of "+boxesarr[0].Main_Id,boxesarr[3].id);
+  console.log('I am ID of ' + boxesarr[0].Main_Id, boxesarr[3].id);
 
+
+
+
+  React.useEffect(()=>{
+    if (
+      index.player1[0] !== 15 &&
+      index.player1[0] <= 15 &&
+      modal.got_1
+    ) {
+      setnum(Math.floor(Math.random() * 7));
+      setindex({
+        player1: [
+          index.player1[0] + num,
+          index.player1[1],
+          index.player1[2],
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    } else {
+      setindex({
+        player1: [
+          (index.player1[0] = 1),
+          index.player1[1],
+          index.player1[2],
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    }
+    if (
+      index.player1[0] !== 15 &&
+      index.player1[0] <= 15 &&
+      modal.got_2
+    ) {
+      setnum(Math.floor(Math.random() * 7));
+      setindex({
+        player1: [
+          index.player1[0],
+          index.player1[1] + num,
+          index.player1[2],
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    } else {
+      setindex({
+        player1: [
+          index.player1[0],
+          (index.player1[1] = 1),
+          index.player1[2],
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    }
+    if (
+      index.player1[0] !== 15 &&
+      index.player1[0] <= 15 &&
+      modal.got_3
+    ) {
+      setnum(Math.floor(Math.random() * 7));
+      setindex({
+        player1: [
+          index.player1[0],
+          index.player1[1],
+          index.player1[2] + num,
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    } else {
+      setindex({
+        player1: [
+          index.player1[0],
+          index.player1[1],
+          (index.player1[2] = 1),
+          index.player1[3],
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    }
+    if (
+      index.player1[0] !== 15 &&
+      index.player1[0] <= 15 &&
+      modal.got_4
+    ) {
+      setnum(Math.floor(Math.random() * 7));
+      setindex({
+        player1: [
+          index.player1[0],
+          index.player1[1],
+          index.player1[2],
+          index.player1[3] + num,
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    } else {
+      setindex({
+        player1: [
+          index.player1[0],
+          index.player1[1],
+          index.player1[2],
+          (index.player1[3] = 0),
+        ],
+        player2: [index.player2],
+        player3: [index.player3],
+        player4: [index.player4],
+      });
+    }
+
+    // if( index.player1[0] == 15){
+
+    console.log('I am player 1', index.player1);
+    console.log('I am player 2', index.player2);
+    console.log('I am player 3', index.player3);
+    console.log('I am player 4', index.player4);
+  },[modal.open,modal.got_1,modal.got_2,modal.got_3,modal.got_4])
   return (
     <View style={styles.container}>
       {/* <View
@@ -700,19 +837,29 @@ export default function App() {
                           val_2.id == val.id ||
                           val_2.id == val.id2 ||
                           val_2.id == val.id3 ||
-                          val_2.id == val.id4 
+                          val_2.id == val.id4
                             ? // val_2.id==val.id
                               val.color
                             : 'white',
                         borderRadius:
                           val_2.place > 8 &&
                           val_2.place < 15 &&
-                          val_2.id !== val.id 
-                          // val_2.id !== val.id2
-                            ? 8
+                          val_2.id !== val.id
+                            ? // val_2.id !== val.id2
+                              8
                             : 0,
                       }}>
-                      {/* <Text style={{color: 'black'}}>{val_2.id}</Text> */}
+                      <Text style={{color: 'black'}}>
+                        {val_2.id == val.id
+                          ? 1
+                          : val_2.id == val.id2
+                          ? 2
+                          : val_2.id == val.id3
+                          ? 3
+                          : val_2.id == val.id4
+                          ? 4
+                          : null}
+                      </Text>
                     </View>
                   ))}
                 </View>
@@ -724,7 +871,7 @@ export default function App() {
                     backgroundColor: val.color,
                     justifyContent: 'center',
                     alignItems: 'center',
-                    borderRadius:40
+                    borderRadius: 40,
 
                     // flexWrap:"wrap"
                     // alignSelf: val.alingment,
@@ -741,8 +888,7 @@ export default function App() {
                       alignItems: 'center',
                       alignContent: 'center',
                       justifyContent: 'center',
-                    borderRadius:10
-
+                      borderRadius: 10,
                     }}>
                     {turns.map(() => (
                       <View
@@ -764,31 +910,16 @@ export default function App() {
       </View>
       <TouchableOpacity
         onPress={() => {
+          setmodal({
+            open: true,
+            got_1: false,
+            got_2: false,
+            got_3: false,
+            got_4: false,
+          });
           //  setturns(turns[0].player[0].got[0].turn+1)
           //  setturns(turns[0].pathcolor)
-if(index.player1[0] !== 15 && index.player1[0] <=15){
-  setnum(Math.floor( Math.random() * 7 ))
-  setindex({
-    player1: [index.player1[0]+num,index.player1[1]=8,index.player1[2],index.player1[3]],
-    player2: [index.player2],
-    player3: [index.player3],
-    player4: [index.player4],
-  });
-}else{
-  setindex({
-    player1: [index.player1[0]=1,index.player1[1]=8,index.player1[2],index.player1[3]],
-    player2: [index.player2],
-    player3: [index.player3],
-    player4: [index.player4],
-  });
-}
-          
-          // if( index.player1[0] == 15){
-           setmodal({open:true})
-            console.log("I am player 1",index.player1)
-            console.log("I am player 2",index.player2)
-            console.log("I am player 3",index.player3)
-            console.log("I am player 4",index.player4)
+        
           // }else{
           //   setindex({
           //     player1: [++index.player1[0],index.player3[1],index.player3[2],index.player3[3]],
@@ -907,20 +1038,95 @@ if(index.player1[0] !== 15 && index.player1[0] <=15){
       {/* <View style={{width:"20%",height:"70%",position:"absolute"}}>
       {places.map(()=>(<View style={{borderWidth:1,height:20,width:20,flexWrap:"wrap"}}></View>))}</View> */}
 
-                                                    {      /*    M   O   D   A   L     */}
-        
+      {/*    M   O   D   A   L     */}
 
-        <Modal visible={modal.open}>
+      <Modal visible={modal.open}>
         <View
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'rgba(0,0,0,0.5)',
-                borderWidth: 1,
-              }}>
-            </View>
-        </Modal>
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: 'rgba(0,0,0,0.5)',
+            borderWidth: 1,
+          }}>
+          <TouchableOpacity
+            onPress={() => {
+              setmodal({
+                open: false,
+                got_1: true,
+                got_2: false,
+                got_3: false,
+                got_4: false,
+              });
+              console.log(index.player1[0]);
+            }}
+            style={{
+              height: 40,
+              backgroundColor: 'white',
+              width: 90,
+              margin: 10,
+            }}>
+            <Text style={{color: 'black', fontSize: 20}}>got 1</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setmodal({
+                open: false,
+                got_1: false,
+                got_2: true,
+                got_3: false,
+                got_4: false,
+              });
+              console.log(index.player1[1]);
+            }}
+            style={{
+              height: 40,
+              backgroundColor: 'white',
+              width: 90,
+              margin: 10,
+            }}>
+            <Text style={{color: 'black', fontSize: 20}}>got 2</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setmodal({
+                open: false,
+                got_1: false,
+                got_2: false,
+                got_3: true,
+                got_4: false,
+              });
+              console.log(index.player1[2]);
+            }}
+            style={{
+              height: 40,
+              backgroundColor: 'white',
+              width: 90,
+              margin: 10,
+            }}>
+            <Text style={{color: 'black', fontSize: 20}}>got 3</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setmodal({
+                open: false,
+                got_1: false,
+                got_2: false,
+                got_3: false,
+                got_4: true,
+              });
+              console.log(index.player1[3]);
+            }}
+            style={{
+              height: 40,
+              backgroundColor: 'white',
+              width: 90,
+              margin: 10,
+            }}>
+            <Text style={{color: 'black', fontSize: 20}}>got </Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
     </View>
   );
 }
